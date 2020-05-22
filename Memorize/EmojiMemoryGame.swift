@@ -17,8 +17,8 @@ class EmojiMemoryGame {
     }
     
     init() {
-        let emojis = ["👻", "🎃"]
-        model = MemoryGame<String>(numberOfPairs: emojis.count) { pairIndex in
+        let emojis = ["🍕", "🍗", "🍔", "🌭", "🥓"]
+        model = MemoryGame<String>(numberOfPairs: (2...5).randomElement()!) { pairIndex in
             return emojis[pairIndex]
         }
     }
