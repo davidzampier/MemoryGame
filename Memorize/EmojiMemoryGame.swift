@@ -8,19 +8,19 @@
 
 import SwiftUI
 
-class EmojiMemoryGame {
-    private var model: MemoryGame<String>
-    
-    // MARK: - Access to the Model
-    var cards: [MemoryGame<String>.Card] {
-        model.cards
-    }
+class EmojiMemoryGame: ObservableObject {
+    @Published private var model: MemoryGame<String>
     
     init() {
         let emojis = ["🍕", "🍗", "🍔", "🌭", "🥓"]
         model = MemoryGame<String>(numberOfPairs: (2...5).randomElement()!) { pairIndex in
-            return emojis[pairIndex]
+            emojis[pairIndex]
         }
+    }
+    
+    // MARK: - Access to the Model
+    var cards: [MemoryGame<String>.Card] {
+        model.cards
     }
     
     //MARK: - Intent(s)
